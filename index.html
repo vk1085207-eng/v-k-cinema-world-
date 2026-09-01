@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>V K Cinema World</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#080808;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:#050505;
+    border-bottom:1px solid #222;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:16px 6%;
+}
+
+.logo{
+    color:#e50914;
+    font-size:23px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:white;
+}
+
+nav{
+    display:flex;
+    gap:22px;
+}
+
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    font-size:15px;
+}
+
+nav a:hover{
+    color:#e50914;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:520px;
+
+    display:flex;
+    align-items:center;
+
+    padding:60px 8%;
+
+    background:
+    linear-gradient(90deg,#000 5%,rgba(0,0,0,.75),rgba(0,0,0,.2)),
+    linear-gradient(0deg,#080808,transparent),
+    url("https://placehold.co/1600x800/171717/ffffff?text=V+K+CINEMA+WORLD");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:650px;
+}
+
+.hero-small{
+    color:#e50914;
+    font-weight:bold;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(42px,7vw,75px);
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero p{
+    color:#ccc;
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:28px;
+}
+
+.hero-btn{
+    background:#e50914;
+    color:white;
+    border:0;
+    padding:14px 24px;
+    border-radius:5px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.hero-btn:hover{
+    background:#f6121d;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-area{
+    padding:45px 6% 20px;
+}
+
+.search-area h2{
+    margin-bottom:18px;
+}
+
+.search-box{
+    max-width:650px;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:16px 20px;
+
+    background:#181818;
+    color:white;
+
+    border:1px solid #333;
+    border-radius:5px;
+
+    outline:none;
+    font-size:16px;
+}
+
+.search-box input:focus{
+    border-color:#e50914;
+}
+
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.categories{
+    padding:20px 6%;
+}
+
+.category-list{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding-bottom:8px;
+}
+
+.category{
+    background:#202020;
+    color:#ddd;
+
+    border:1px solid #333;
+    border-radius:20px;
+
+    padding:9px 17px;
+
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.category:hover,
+.category.active{
+    background:#e50914;
+    border-color:#e50914;
+    color:white;
+}
+
+
+/* =========================
+   MOVIES
+========================= */
+
+.movies{
+    padding:25px 6% 70px;
+}
+
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+.section-heading span{
+    color:#888;
+}
+
+.movie-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    gap:20px;
+}
+
+.movie-card{
+    background:#151515;
+    border-radius:7px;
+    overflow:hidden;
+
+    transition:.3s;
+
+    border:1px solid #202020;
+}
+
+.movie-card:hover{
+    transform:translateY(-7px);
+
+    box-shadow:
+    0 10px 30px rgba(229,9,20,.25);
+}
+
+.movie-poster{
+    width:100%;
+
+    aspect-ratio:2/3;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.movie-info{
+    padding:14px;
+}
+
+.movie-info h3{
+    font-size:17px;
+    margin-bottom:8px;
+}
+
+.meta{
+    color:#999;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.rating{
+    color:#ffc107;
+    font-size:14px;
+    margin-bottom:12px;
+}
+
+.movie-buttons{
+    display:flex;
+    gap:7px;
+}
+
+.trailer-btn,
+.details-btn{
+    flex:1;
+
+    padding:9px 5px;
+
+    border:0;
+    border-radius:4px;
+
+    color:white;
+    cursor:pointer;
+
+    font-weight:bold;
+    font-size:12px;
+}
+
+.trailer-btn{
+    background:#e50914;
+}
+
+.details-btn{
+    background:#333;
+}
+
+.trailer-btn:hover{
+    background:#b20710;
+}
+
+.details-btn:hover{
+    background:#444;
+}
+
+
+/* =========================
+   NO RESULTS
+========================= */
+
+#noResults{
+    display:none;
+
+    text-align:center;
+
+    color:#999;
+
+    padding:50px;
+}
+
+
+/* =========================
+   TRAILER
+========================= */
+
+.trailer-section{
+    background:#111;
+
+    padding:60px 6%;
+
+    text-align:center;
+}
+
+.trailer-section h2{
+    margin-bottom:25px;
+}
+
+.video-box{
+    max-width:950px;
+
+    margin:auto;
+
+    background:#000;
+
+    border:1px solid #292929;
+
+    border-radius:8px;
+
+    min-height:420px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    color:#777;
+}
+
+.video-box iframe{
+    width:100%;
+    height:520px;
+    border:0;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#050505;
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    color:#777;
+}
+
+footer h3{
+    color:#e50914;
+    margin-bottom:10px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1100px){
+
+    .movie-grid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+}
+
+
+@media(max-width:700px){
+
+    header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav{
+        gap:17px;
+    }
+
+    .hero{
+        min-height:470px;
+        padding:50px 6%;
+    }
+
+    .hero h1{
+        font-size:44px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .movie-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:12px;
+    }
+
+    .movie-info{
+        padding:10px;
+    }
+
+    .movie-info h3{
+        font-size:14px;
+    }
+
+    .video-box{
+        min-height:230px;
+    }
+
+    .video-box iframe{
+        height:230px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="logo">
+        V K <span>CINEMA WORLD</span>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#movies">Movies</a>
+        <a href="#trailers">Trailers</a>
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            WELCOME TO
+        </div>
+
+        <h1>
+            V K Cinema World
+        </h1>
+
+        <p>
+            Discover movies, ratings, release dates
+            and the latest movie trailers.
+        </p>
+
+        <button
+            class="hero-btn"
+            onclick="goMovies()">
+
+            🎬 Explore Movies
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<section class="search-area">
+
+    <h2>
+        🔍 Search Movies
+    </h2>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Movie का नाम लिखें..."
+            oninput="searchMovies()">
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section class="categories">
+
+    <h2>
+        Categories
+    </h2>
+
+    <br>
+
+    <div class="category-list">
+
+        <button
+            class="category active"
+            onclick="filterCategory('All',this)">
+            All
+        </button>
+
+        <button
+            class="category"
+            onclick="filterCategory('Action',this)">
+            Action
+        </button>
+
+        <button
+            class="category"
+            onclick="filterCategory('Comedy',this)">
+            Comedy
+        </button>
+
+        <button
+            class="category"
+            onclick="filterCategory('Horror',this)">
+            Horror
+        </button>
+
+        <button
+            class="category"
+            onclick="filterCategory('Romance',this)">
+            Romance
+        </button>
+
+        <button
+            class="category"
+            onclick="filterCategory('Drama',this)">
+            Drama
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MOVIES
+========================= -->
+
+<section class="movies" id="movies">
+
+    <div class="section-heading">
+
+        <h2>
+            🎬 Latest Movies
+        </h2>
+
+        <span>
+            20 Movies
+        </span>
+
+    </div>
+
+
+    <div class="movie-grid" id="movieGrid">
+
+
+        <!-- 1 -->
+
+        <div
+            class="movie-card"
+            data-name="Movie One"
+            data-category="Action">
+
+            <img
+                class="movie-poster"
+                src="https://placehold.co/300x450/151515/ffffff?text=Movie+01"
+                alt="Movie 1">
+
+            <div class="movie-info">
+
+                <h3>Movie One</h3>
+
+                <div class="meta">
+                    Action • 2026
+                </div>
+
+                <div class="rating">
+                    ⭐ 8.2
+                </div>
+
+                <div class="movie-buttons">
+
+                    <button
+                        class="trailer-btn"
+                        onclick="watchTrailer()">
+                        ▶ Trailer
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails('Movie One')">
+                        Info
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div
+            class="movie-card"
+            data-name="Movie Two"
+            data-category="Comedy">
+
+            <img
+                class="movie-poster"
+                src="https://placehold.co/300x450/151515/ffffff?text=Movie+02"
+                alt="Movie 2">
+
+            <div class="movie-info">
+
+                <h3>Movie Two</h3>
+
+                <div class="meta">
+                    Comedy • 2026
+                </div>
+
+                <div class="rating">
+                    ⭐ 7.9
+                </div>
+
+                <div class="movie-buttons">
+
+                    <button
+                        class="trailer-btn"
+                        onclick="watchTrailer()">
+                        ▶ Trailer
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails('Movie Two')">
+                        Info
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div
+            class="movie-card"
+            data-name="Movie Three"
+            data-category="Horror">
+
+            <img
+                class="movie-poster"
+                src="https://placehold.co/300x450/151515/ffffff?text=Movie+03"
+                alt="Movie 3">
+
+            <div class="movie-info">
+
+                <h3>Movie Three</h3>
+
+                <div class="meta">
+                    Horror • 2026
+                </div>
+
+                <div class="rating">
+                    ⭐ 8.5
+                </div>
+
+                <div class="movie-buttons">
+
+                    <button
+                        class="trailer-btn"
+                        onclick="watchTrailer()">
+                        ▶ Trailer
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails('Movie Three')">
+                        Info
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div
+            class="movie-card"
+            data-name="Movie Four"
+            data-category="Romance">
+
+            <img
+                class="movie-poster"
+                src="https://placehold.co/300x450/151515/ffffff?text=Movie+04"
+                alt="Movie 4">
+
+            <div class="movie-info">
+
+                <h3>Movie Four</h3>
+
+                <div class="meta">
+                    Romance • 2026
+                </div>
+
+                <div class="rating">
+                    ⭐ 7.6
+                </div>
+
+                <div class="movie-buttons">
+
+                    <button
+                        class="trailer-btn"
+                        onclick="watchTrailer()">
+                        ▶ Trailer
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails('Movie Four')">
+                        Info
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div
+            class="movie-card"
+            data-name="Movie Five"
+            data-category="Drama">
+
+            <img
+                class="movie-poster"
+                src="https://placehold.co/300x450/151515/ffffff?text=Movie+05"
+                alt="Movie 5">
+
+            <div class="movie-info">
+
+                <h3>Movie Five</h3>
+
+                <div class="meta">
+                    Drama • 2026
+                </div>
+
+                <div class="rating">
+                    ⭐ 8.1
+                </div>
+
+                <div class="movie-buttons">
+
+                    <button
+                        class="trailer-btn"
+                        onclick="watchTrailer()">
+                        ▶ Trailer
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails('Movie Five')">
+                        Info
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 6 -->
+
+        <div
+            class="movie-card"
+            data-name="Movie Six"
+            data-category="Action">
+
+            <img
+                class="movie-poster"
+                src="https://placehold.co/300x450/151515/ffffff?text=Movie+06"
+                alt="Movie 6">
+
+            <div class="movie-info">
+
+                <h3>Movie Six</h3>
+
+                <div class="meta">
+                    Action • 2026
+                </div>
+
+                <div class="rating">
+                    ⭐ 8.0
+                </div>
+
+                <div class="movie-buttons">
+
+                    <button
+                        class="trailer-btn"
+                        onclick="watchTrailer()">
+                        ▶ Trailer
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails('Movie Six')">
+                        Info
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 7 -->
+
+        <div
+            class="movie-card"
+            data-name="Movie Seven"
+            data-category="Comedy">
+
+            <img
+                class="movie-poster"
+                src="https://placehold.co/300x450/151515/ffffff?text=Movie+07"
+                alt="Movie 7">
+
+            <div class="movie-info">
+
+                <h3>Movie Seven</h3>
+
+                <div class="meta">
+                    Comedy • 2026
+                </div>
+
+                <div class="rating">
+                    ⭐ 7.8
+                </div>
+
+                <div class="movie-buttons">
+
+                    <button
+                        class="trailer-btn"
+                        onclick="watchTrailer()">
+                        ▶ Trailer
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails('Movie Seven')">
+                        Info
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 8 -->
+
+        <div
+            class="movie-card"
+            data-name="Movie Eight"
+            data-category="Horror">
+
+            <img
+                class="movie-poster"
+                src="https://placehold.co/300x450/151515/ffffff?text=Movie+08"
+                alt="Movie 8">
+
+            <div class="movie-info">
+
+                <h3>Movie Eight</h3>
+
+                <div class="meta">
+                    Horror • 2026
+                </div>
+
+                <div class="rating">
+                    ⭐ 8.3
+                </div>
+
+                <div class="movie-buttons">
+
+                    <button
+                        class="trailer-btn"
+                        onclick="watchTrailer()">
+                        ▶ Trailer
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails('Movie Eight')">
+                        Info
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 9 -->
+
+        <div
+            class="movie-card"
+            data-name="Movie Nine"
+            data-category="Romance">
+
+            <img
+                class="movie-poster"
+                src="https://placehold.co/300x450/151515/ffffff?text=Movie+09"
+                alt="Movie 9">
+
+            <div class="movie-info">
+
+                <h3>Movie Nine</h3>
+
+                <div class="meta">
+                    Romance • 2026
+                </div>
+
+                <div class="rating">
+                    ⭐ 7.7
+                </div>
+
+                <div class="movie-buttons">
+
+                    <button
+                        class="trailer-btn"
+                        onclick="watchTrailer()">
+                        ▶ Trailer
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails('Movie Nine')">
+                        Info
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 10 -->
+
+        <div
+            class="movie-card"
+            data-name="Movie Ten"
+            data-category="Drama">
+
+            <img
+                class="movie-poster"
+                src="https://placehold.co/300x450/151515/ffffff?text=Movie+10"
+                alt="Movie 10">
+
+            <div class="movie-info">
+
+                <h3>Movie Ten</h3>
+
+                <div class="meta">
+                    Drama • 2026
+                </div>
+
+                <div class="rating">
+                    ⭐ 8.4
+                </div>
+
+                <div class="movie-buttons">
+
+                    <button
+                        class="trailer-btn"
+                        onclick="watchTrailer()">
+                        ▶ Trailer
+                    </button>
+
+                    <button
+                        class="details-btn"
+                        onclick="showDetails('Movie Ten')">
+                        Info
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 11 -->
+
+        <div
+            class="movie-card"
+            data-name="Movie Eleven"
+            data-category="Action">
+
+            <img
+                class="movie-poster"
+                src="https://placehold.co/300x450/151515/ffffff?text=Movie+11"
+                alt="Movie 11">
+
+            <div class="movie-info">
+                <h3>Movie Eleven</h3>
+                <div class="meta">Action • 2026</div>
+                <div class="rating">⭐ 8.0</div>
+
+                <div class="movie-buttons">
+                    <button class="trailer-btn" onclick="watchTrailer()">▶ Trailer</button>
+                    <button class="details-btn" onclick="showDetails('Movie Eleven')">Info</button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- 12 -->
+
+        <div
+            class="movie-card"
+            data-name="Movie Twelve"
+            data-category="Comedy">
+
+            <img
+                class="movie-poster"
+                src="https://placehold.co/300x450/151515/ffffff
